@@ -48,7 +48,7 @@ This section is about simulating an inverter, built from an N-Channel MOSFET and
 === Circuit diagrams
 
 #figure(
-  caption: [LogiSim circuit diagrams with _input = 0_ (left) and _input = 1_ (right)#footnote[I am on M1 Mac and therefore could not use original LogiSim, I had to download and compile LogiSim-evolution instead, but I could follow all the instructions the same, but thats the reason the table and circuit diagram may look different than expected. Also, in LogiSim-evolution i was unable to name the input `"input"` and so had to name it` "input0"`.]],
+  caption: [LogiSim circuit diagrams with _input = 0_ (left) and _input = 1_ (right)#footnote[I am on M1 Mac and therefore could not use original LogiSim, I had to download and compile LogiSim-evolution from GitHub instead, but I could follow all the Lab instructions the same, but thats the reason the table and circuit diagram may look different than expected. Also, in LogiSim-evolution i was unable to name the input `"input"` and so had to name it` "input0"`.]],
 )[
   #stack(dir: ltr, spacing: 50pt, image("assets/5.2.1.circuit_0.png", width: 19%), image(
     "assets/5.2.1.circuit_1.png",
@@ -62,9 +62,10 @@ This section is about simulating an inverter, built from an N-Channel MOSFET and
 // #include "1.2.plot_sim.typ"
 
 #v(10pt)
-=== Text Questions::
+=== Text Questions:
 #figure(caption: [Screenshot of the truth table from _LogiSim_])[
-  #image("assets/Bildschirmfoto 2026-01-31 um 15.13.45.png", width: 30%)
+  #table()
+  #image("assets/5.2.1.png", width: 30%)
 ]
 #pagebreak()
 
@@ -107,20 +108,60 @@ We successfully simulated the inverter and inverter chain in LogiSim #footnote[Q
 
 === Introduction
 
+This section is about simulating three different logic gates, which can all be seen in @fig3.
+
+_Logic circuit 1_ has all diode sources connected to _GND_ and all drains connected together, with a _pull-up_ resistor and the output pin attatched.
+
+_Logic circuit 2_ has all diodes connected in series, so drain to source for each of them, with the first source connected to _GND_ and the last drain connected to a _pull-up_ resistor and the output pin.
+
+_Logic circuit 3_ has two transistors connected in series as seen in gate 2, and the third transistor standing alone, again connected to _GND_ at the source and both drains connected to the same _pull-up_ resistor and output pin.
+
+All three truth tables and logical formula can be seen in @table2.
+
 === Circuit diagrams:
 
-#figure(caption: [LogiSim circuit diagram])[
-  // #image("assets/2.2.1.circuit.jpg", width: 39%)
-] <5.3.1.circuit>
-
-
-=== Plots
-
-#include "1.3.plot_sim.typ"
-
+#align(center)[
+  #block(width: 95%)[
+    #figure(
+      caption: [LogiSim circuit diagrams of the three logic circuits],
+    )[
+      #stack(
+        dir: ltr,
+        image("assets/5.3.1.1.svg", width: 30%),
+        h(5%),
+        line(angle: 90deg, length: 15%, stroke: .25pt),
+        image("assets/5.3.1.2.svg", width: 41%),
+        line(angle: 90deg, length: 15%, stroke: .25pt),
+        image("assets/5.3.1.3.svg", width: 30%),
+      )
+      #stack(dir: ltr, spacing: 150pt, [(1)], [(2)], [(3)])
+      #v(5pt)
+    ] <fig3>
+  ]
+]
 === Text questions:
 
+#figure(caption: [Truth tables for all three logic circuits])[
+  #table(
+    columns: (30%, 33%, 30%),
+    inset: 5pt,
+    align: horizon + center,
+    stroke: 0pt,
+    [#image("assets/5.3.1.1.png")], [#image("assets/5.3.1.2.png", width: 90%)], [#image("assets/5.3.1.3.png")],
+    [Logic circuit 1], [Logic circuit 2], [Logic circuit 3],
+    [`NOR(A, B. C)`], [`NAND(A, B, C)`], [$overline(A) dot overline((B dot C))$],
+  )
+] <table2>
+
+_Logic circuit 1_ is a standard logic gate, `NOR` to be specific, and *D* is 1 when neither `A` nor `B` nor `C` is active (hence the name), so when even one of them is 1, the output is 0.
+
+_Logic circuit 2_ is also a standard logic gate, `NAND`, and *D* is 1 when all three inputs are 1 and 0 in all other cases.
+
+_Logic circuit 3_ is not a standard gate, but its output can be described as $D =overline(A) dot overline((B dot C))$ or in words as `NOT A AND NOT (B AND C)` and as seen in the table *D* is *0* for all inputs with *A*=1 and *1* for all inputs with *A=0* except *ABC=011*.
+
 === Conclusion
+
+We successfully built, simulated and evaluated all three logic circuits and found that circuit 1 and 2 were standard logic gates, namely `NOR` and `NAND`, while the third one was not a standard one, but could be described with the logic formula $D =overline(A) dot overline((B dot C))$.
 
 == 5.3.2. Measurement
 
