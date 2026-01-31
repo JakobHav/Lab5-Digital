@@ -169,11 +169,72 @@ We successfully built, simulated and evaluated all three logic circuits and foun
 
 === Circuit diagrams:
 
+#figure(
+  caption: [Schematic of the _MOSFET characteristics_ circuit (left)\ and the _MOSFET logic gates_ circuit (right)],
+)[
+  #stack(
+    dir: ltr,
+    image("assets/5.2.2.circuit.png", width: 30%),
+    h(5%),
+    line(angle: 90deg, length: 220pt, stroke: .25pt),
+    h(5%),
+    image("assets/5.2.2.circuit1.png", width: 60%),
+  )
+] <5.3.2.circuit>
 
 
-=== Plots
+=== Truth tables
 
-#include "1.3.plot_real.typ"
+#figure()[
+  #stack(
+    dir: ltr,
+    spacing: 30pt,
+    table(
+      columns: 4,
+      inset: 5pt,
+      align: horizon,
+      table.header([$D space 0$], [$D space 1$], [$D space 2$], [$D I 8$]),
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+    ),
+    table(
+      columns: 4,
+      inset: 5pt,
+      align: horizon,
+      table.header([$D space 0$], [$D space 1$], [$D space 2$], [$D space 8$]),
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+    ),
+    table(
+      columns: 4,
+      inset: 5pt,
+      align: horizon,
+      table.header([$D space 0$], [$D space 1$], [$D space 2$], [$D space 8$]),
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+      [0], [0], [0], [0],
+    ),
+  )
+  #stack(dir: ltr, spacing: 76pt, [Logic circuit 1], [Logic circuit 2], [Logic circuit 3])
+]
+
 
 === Text questions:
 
