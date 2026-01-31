@@ -44,6 +44,7 @@ Milan Fark
 
 This section is about simulating an inverter, built from an N-Channel MOSFET and then simulating a chain made out of three of those inverters. As seen in @fig1, the source of each transistor is connected to _GND_, while the drain is connected to a _pull-up_ resistor. The gate of the first transistor is connected to the input, in this case a _LogiSim_ _PIN_ element, while the gate of the other transistors is connected to the output of the previous one.
 
+#v(10pt)
 === Circuit diagrams
 
 #figure(
@@ -60,9 +61,13 @@ This section is about simulating an inverter, built from an N-Channel MOSFET and
 
 // #include "1.2.plot_sim.typ"
 
+#v(10pt)
 === Text Questions::
+#figure(caption: [Screenshot of the truth table from _LogiSim_])[
+  #image("assets/Bildschirmfoto 2026-01-31 um 15.13.45.png", width: 30%)
+]
+#pagebreak()
 
-#image("assets/Bildschirmfoto 2026-01-31 um 15.13.45.png", width: 30%)
 When the input is 0, the output is just connected to the _pull-up_ resistor and is therefore 1, when the input is 1, the MOSFET opens and connects the output to _GND_. In the logic table, we can therefore see an alternating pattern between 0 and 1 for input and output respectively.
 
 === Conclusion
