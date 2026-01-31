@@ -1,7 +1,7 @@
 #import "@preview/lilaq:0.5.0" as lq
 
 #set page(background: image("assets/frontpage.jpg"))
-#v(210pt)
+#v(209pt)
 #h(105pt)
 Jakob Haverkamp
 #h(155pt)
@@ -102,6 +102,7 @@ We successfully simulated the inverter and inverter chain in LogiSim #footnote[Q
 
 === Conclusion
 
+#pagebreak()
 = 5.3 NMOS logic
 
 == 5.3.1. Simulation
