@@ -1,12 +1,12 @@
 #import "@preview/lilaq:0.5.0" as lq
 
 #set page(background: image("assets/frontpage.jpg"))
-#v(209pt)
+#v(209.5pt)
 #h(105pt)
 Jakob Haverkamp
 #h(155pt)
 5932110
-
+#v(1pt)
 #h(105pt)
 Milan Fark
 #h(186pt)
