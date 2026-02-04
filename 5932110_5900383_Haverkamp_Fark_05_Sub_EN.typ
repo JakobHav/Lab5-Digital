@@ -100,6 +100,52 @@ We successfully simulated the inverter and inverter chain in LogiSim #footnote[Q
 
 === Text questions:
 
+
+$t_(p d, r i s e)$ = #{ 12.01 - 5.1 } $mu$s
+
+$t_(p d, f a l l)$ = #{ -7.145 + 14.815 } $mu$s
+
+$f = 1 / (7.67 mu"s" + 6.91 mu"s") = 1/(#{ 7.67 + 6.91 }mu"s")=#{ calc.round(1 / (14.58 * calc.pow(10, -3)), digits: 2) }$ kHz
+
+
+#figure(caption: [Truth table of $V_(i n)$, $I n v_1, space I n v_2, " and" I n v_3$])[
+  #table(
+    columns: 4,
+    inset: 5pt,
+    align: horizon + center,
+    table.header([$V_(i n)$], [$I n v_1$], [$I n v_2$], [$I n v_3$]),
+    [0], [1], [0], [1],
+    [1], [0], [1], [0],
+  )
+]
+\
+#figure(caption: [Truth table of $V_(i n)$, $I n v_1, space I n v_2, " and" I n v_3$])[
+  #table(
+    columns: 6,
+    inset: 5pt,
+    align: horizon + center,
+    table.header(
+      [], [$T_(L,i) space[mu"s"]$], [$T_(H,i)space[mu"s"]$], [$tau_i space[mu"s"]$], [$f_i$ [kHz]], [$p_i space[%]$]
+    ),
+    [$I n v 1$],
+    [#{ 6.44 }],
+    [#{ 8.02 - 0.84 }],
+    [#{ 13.62 }],
+    [#calc.round(1e3 * 1 / 13.62, digits: 2)],
+    [#calc.round(7.18 / 13.62 * 100, digits: 2)],
+
+    [$I n v 2$],
+    [#{ 4.52 }],
+    [#{ 9.08 }],
+    [$13.60$],
+    [#calc.round(1e3 * 1 / 13.60, digits: 2)],
+    [#calc.round(9.08 / 13.60 * 100, digits: 2)],
+
+    [$I n v 2$], [#{ 8.38 }], [#{ 5.24 }], [13.62], [73.42], [#calc.round(5.24 / 13.62 * 100, digits: 2)],
+  )
+]
+
+
 === Conclusion
 
 #pagebreak()
