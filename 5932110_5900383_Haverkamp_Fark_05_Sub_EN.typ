@@ -79,6 +79,8 @@ We successfully simulated the inverter and inverter chain in LogiSim #footnote[Q
 
 === Introduction
 
+In this section, we build a ring-oscilator from three MOSFET, which were all uses as inverters.
+
 === Circuit diagrams:
 
 #figure(
@@ -143,8 +145,14 @@ $f = 1 / (7.67 mu"s" + 6.91 mu"s") = 1/(#{ 7.67 + 6.91 }mu"s")=#{ calc.round(1 /
 
     [$I n v 2$], [#{ 8.38 }], [#{ 5.24 }], [13.62], [73.42], [#calc.round(5.24 / 13.62 * 100, digits: 2)],
   )
-]
+] <tab3>
 
+As seen in @tab3, _Inv1_ has the closest duty cycle to 50% with 52.72% signal high, so we chose _Inv1_ for the plot.
+
+The actual frequency of the ring-oscilator is about 5 kHz higher than the one estimated earlier. For _Inv1_ and _Inv3_ we have the same frequency of 73.42 kHz, for _Inv2_ we calculated 73.53 kHz which is slightly higher. The difference is probably caused by small measuring errors, as the difference in periods is only 20 ns.
+
+TODO: Explicitly address their shape
+and compare both signals
 
 === Conclusion
 
@@ -232,7 +240,7 @@ We successfully built, simulated and evaluated all three logic circuits and foun
 
 === Truth tables
 
-#figure()[
+#figure(caption: "Truth tables for logic circuits 1, 2 and 3")[
   #stack(
     dir: ltr,
     spacing: 30pt,
@@ -241,45 +249,52 @@ We successfully built, simulated and evaluated all three logic circuits and foun
       inset: 5pt,
       align: horizon,
       table.header([$D space 0$], [$D space 1$], [$D space 2$], [$D I 8$]),
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
+      [0], [0], [0], [1],
+      [0], [0], [1], [0],
+      [0], [1], [0], [0],
+      [0], [1], [1], [0],
+      [1], [0], [0], [0],
+      [1], [0], [1], [0],
+      [1], [1], [0], [0],
+      [1], [1], [1], [0],
     ),
     table(
       columns: 4,
       inset: 5pt,
       align: horizon,
       table.header([$D space 0$], [$D space 1$], [$D space 2$], [$D space 8$]),
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
+      [0], [0], [0], [1],
+      [0], [0], [1], [1],
+      [0], [1], [0], [1],
+      [0], [1], [1], [1],
+      [1], [0], [0], [1],
+      [1], [0], [1], [1],
+      [1], [1], [0], [1],
+      [1], [1], [1], [0],
     ),
     table(
       columns: 4,
       inset: 5pt,
       align: horizon,
       table.header([$D space 0$], [$D space 1$], [$D space 2$], [$D space 8$]),
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
-      [0], [0], [0], [0],
+      [0], [0], [0], [1],
+      [0], [0], [1], [0],
+      [0], [1], [0], [1],
+      [0], [1], [1], [0],
+      [1], [0], [0], [1],
+      [1], [0], [1], [0],
+      [1], [1], [0], [0],
+      [1], [1], [1], [0],
     ),
   )
-  #stack(dir: ltr, spacing: 76pt, [Logic circuit 1], [Logic circuit 2], [Logic circuit 3])
+  #stack(
+    dir: ltr,
+    spacing: 76pt,
+    [Logic circuit 1 \ `NOR(A, B. C)`],
+    [Logic circuit 2\ `NAND(A, B, C)`],
+    [Logic circuit 3 \ $overline(D 2) dot overline((D 0 dot D 1))$],
+  )
+  #v(1em)
 ]
 
 
