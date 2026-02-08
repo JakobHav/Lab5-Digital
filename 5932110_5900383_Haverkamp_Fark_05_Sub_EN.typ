@@ -79,7 +79,7 @@ We successfully simulated the inverter and inverter chain in LogiSim #footnote[Q
 
 === Introduction
 
-In this section, we build a ring-oscilator from three MOSFET, which were all uses as inverters.
+In this section, we build a ring-oscilator from three MOSFET, which were all used as inverters.
 
 === Circuit diagrams:
 
@@ -151,11 +151,12 @@ As seen in @tab3, _Inv1_ has the closest duty cycle to 50% with 52.72% signal hi
 
 The actual frequency of the ring-oscilator is about 5 kHz higher than the one estimated earlier. For _Inv1_ and _Inv3_ we have the same frequency of 73.42 kHz, for _Inv2_ we calculated 73.53 kHz which is slightly higher. The difference is probably caused by small measuring errors, as the difference in periods is only 20 ns.
 
-TODO: Explicitly address their shape
-and compare both signals
+The analogue and digital signal values differ in shape as seen in @fig10. As the digital signal value can only be 1 or 0 the function resembles a square wave. The analogue signal is measured as the voltage. This leads to a function with a slanted rising edge but a nearly instant falling edge. The difference can be explained by the delayed reaction of the transistors.
+//TODO: Explicitly address their shape
+//and compare both signals
 
 === Conclusion
-
+In this section the difference between analogue and digital signal became apparent in its reaction speed and edge sharpness. Also the usage of the ring-oscilator as an inverter was showcased quite nicely.
 #pagebreak()
 = 5.3 NMOS logic
 
