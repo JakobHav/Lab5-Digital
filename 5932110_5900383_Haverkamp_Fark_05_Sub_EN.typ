@@ -157,7 +157,7 @@ The analogue and digital signal values differ in shape as seen in @fig10. As the
 
 === Conclusion
 In this section the difference between analogue and digital signal became apparent in its reaction speed and edge sharpness. Also the usage of the ring-oscilator as an inverter was showcased quite nicely.
-#pagebreak()
+//#pagebreak()
 = 5.3 NMOS logic
 
 == 5.3.1. Simulation
@@ -222,7 +222,7 @@ We successfully built, simulated and evaluated all three logic circuits and foun
 == 5.3.2. Measurement
 
 === Introduction
-
+In this section we measured logic circuits similar to the ones simulated.
 === Circuit diagrams:
 
 #figure(
@@ -296,10 +296,11 @@ We successfully built, simulated and evaluated all three logic circuits and foun
     [Logic circuit 3 \ $overline(D 2) dot overline((D 0 dot D 1))$],
   )
   #v(1em)
-]
+] <tab5>
 
 
 === Text questions:
-
+The truth tables can be found in @tab5
 === Conclusion
+The first two circuits were the same as simulated, the third however was slightly different. This circuit showed the usage of MOSFETs in logic gates and some possible use cases.
 
