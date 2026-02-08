@@ -79,7 +79,11 @@ We successfully simulated the inverter and inverter chain in LogiSim #footnote[Q
 
 === Introduction
 
-In this section, we build a ring-oscilator from three MOSFET, which were all used as inverters.
+In this section, we first build inverter chain and then a ring-oscilator from three MOSFETs, which were all used as inverters.
+
+Two of the three are located in the _MOSFET logic gates_ section, the other in the _MOSFET characteristics_ circuit, as can be seen in @fig2.
+
+For _Inv1_, which had the closest duty cycle to 50%, we also looked at the shape of the digital vs analogue signal, which can be seen in @plot.
 
 === Circuit diagrams:
 
@@ -94,21 +98,13 @@ In this section, we build a ring-oscilator from three MOSFET, which were all use
     h(5%),
     image("assets/5.2.2.circuit1.png", width: 60%),
   )
-] <fig5>
+] <fig2>
 
 === Plots
 
 #include "1.2.plot_real.typ"
 
 === Text questions:
-
-
-$t_(p d, r i s e)$ = #{ 12.01 - 5.1 } $mu$s
-
-$t_(p d, f a l l)$ = #{ -7.145 + 14.815 } $mu$s
-
-$f = 1 / (7.67 mu"s" + 6.91 mu"s") = 1/(#{ 7.67 + 6.91 }mu"s")=#{ calc.round(1 / (14.58 * calc.pow(10, -3)), digits: 2) }$ kHz
-
 
 #figure(caption: [Truth table of $V_(i n)$, $I n v_1, space I n v_2, " and" I n v_3$])[
   #table(
@@ -119,7 +115,24 @@ $f = 1 / (7.67 mu"s" + 6.91 mu"s") = 1/(#{ 7.67 + 6.91 }mu"s")=#{ calc.round(1 /
     [0], [1], [0], [1],
     [1], [0], [1], [0],
   )
-]
+] <5.2.table1>
+
+We can see the alternating behavior of the inverters in @5.2.table1, where every signal is the inverted value of the previous.
+
+The time from the first transistor to the third transistor in the chain switching was:
+
+$ t_(p d, r i s e) = #{ 12.01 - 5.1 } mu"s" $
+
+$ t_(p d, f a l l) = #{ -7.145 + 14.815 } mu"s" $
+
+From which we estimated the ring-oscilator frequency:
+
+$
+  f = 1 / (7.67 mu"s" + 6.91 mu"s") = 1/(#{ 7.67 + 6.91 }mu"s")=#{ calc.round(1 / (14.58 * calc.pow(10, -3)), digits: 2) }"kHz"
+$
+
+#align(center)[#line(length: 80%, stroke: 0.2pt)]
+
 \
 #figure(caption: [Truth table of $V_(i n)$, $I n v_1, space I n v_2, " and" I n v_3$])[
   #table(
@@ -151,12 +164,14 @@ As seen in @tab3, _Inv1_ has the closest duty cycle to 50% with 52.72% signal hi
 
 The actual frequency of the ring-oscilator is about 5 kHz higher than the one estimated earlier. For _Inv1_ and _Inv3_ we have the same frequency of 73.42 kHz, for _Inv2_ we calculated 73.53 kHz which is slightly higher. The difference is probably caused by small measuring errors, as the difference in periods is only 20 ns.
 
-The analogue and digital signal values differ in shape as seen in @fig10. As the digital signal value can only be 1 or 0 the function resembles a square wave. The analogue signal is measured as the voltage. This leads to a function with a slanted rising edge but a nearly instant falling edge. The difference can be explained by the delayed reaction of the transistors.
+The analogue and digital signal values differ in shape as seen in @plot. As the digital signal value can only be 1 or 0 the function resembles a square wave. The analogue signal is measured as the voltage. This leads to a function with a slanted rising edge but a nearly instant falling edge. The difference can be explained by the delayed reaction of the transistors.
 //TODO: Explicitly address their shape
 //and compare both signals
 
 === Conclusion
-In this section the difference between analogue and digital signal became apparent in its reaction speed and edge sharpness. Also the usage of the ring-oscilator as an inverter was showcased quite nicely.
+In this section the difference between analogue and digital signal became apparent in its reaction speed and edge sharpness. The estimated frequency was quite similar to the actual frequency of the ring oscilator. In @tab3, we could clearly see the different duty cyles, ranging from $approx 38%$ to $approx 67%$.
+
+Also just seeing the ring-oscilator work in real time was very cool.
 //#pagebreak()
 = 5.3 NMOS logic
 
@@ -179,7 +194,7 @@ All three truth tables and logical formula can be seen in @table2.
 #align(center)[
   #block(width: 95%)[
     #figure(
-      caption: [LogiSim circuit diagrams of the three logic circuits],
+      caption: [LogiSim-evolution circuit diagrams of the three logic circuits],
     )[
       #stack(
         dir: ltr,
@@ -222,7 +237,7 @@ We successfully built, simulated and evaluated all three logic circuits and foun
 == 5.3.2. Measurement
 
 === Introduction
-In this section we measured logic circuits similar to the ones simulated.
+In this section we measured, analyzed and generated truth tables for three logic circuits similar to the ones simulated in the previous section. For that, we used the same three MOSFETS as in the prior meausrement, which can be seen again in the circuit diagram in @5.3.2.circuit and connected them to the digtial IO of the USB-XLAB.
 === Circuit diagrams:
 
 #figure(
@@ -300,7 +315,7 @@ In this section we measured logic circuits similar to the ones simulated.
 
 
 === Text questions:
-The truth tables can be found in @tab5
+The truth tables can be found in @tab5. We can see the same `NOR` and `NAND`-gates we simultated and even have the same third circuit with _A_ corresponding to _D2_, _B_ corresponding to _D0_ and _C_ corresponding to _D1_.
 === Conclusion
-The first two circuits were the same as simulated, the third however was slightly different. This circuit showed the usage of MOSFETs in logic gates and some possible use cases.
 
+We successfully meausred the same gates we saw in the simulation, with Logic circuit 1 being a `NOR`-Gate, 2 being a `NAND`-Gate and three being the logic clause: $overline(D 2) dot overline((D 0 dot D 1))$, which corresponded to the simulated one with different variables as described in the text questions.

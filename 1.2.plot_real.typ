@@ -51,4 +51,4 @@
 
     lq.plot(time, volt, mark: ".", label: [analogue], mark-size: 0pt),
   )
-] <fig10>
+] <plot>
